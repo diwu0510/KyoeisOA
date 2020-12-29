@@ -1,0 +1,45 @@
+﻿[
+  {
+    "name": "组织架构",
+    "icon": "fa fa-user-circle",
+    "url": "",
+    "children": [
+      {
+        "children": [],
+        "name": "公司管理",
+        "icon": "fa fa-cog",
+        "url": "/manage/company"
+      },
+      {
+        "children": [],
+        "name": "部门管理",
+        "icon": "fa fa-briefcase",
+        "url": "/manage/department"
+      },
+      {
+        "children": [],
+        "name": "客户端管理",
+        "icon": "fa fa-database",
+        "url": "/manage/application"
+      },
+      {
+        "children": [],
+        "name": "作用域管理",
+        "icon": "fa fa-gavel",
+        "url": "/manage/scope"
+      },
+      {
+        "children": [],
+        "name": "职位管理",
+        "icon": "fa fa-book",
+        "url": "/manage/position"
+      },
+      {
+        "children": [],
+        "name": "用户管理",
+        "icon": "fa fa-database",
+        "url": "/manage/user"
+      }
+    ]
+  }
+]

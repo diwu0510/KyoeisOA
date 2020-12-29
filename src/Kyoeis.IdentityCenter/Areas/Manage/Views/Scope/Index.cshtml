@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "作用域管理";
+}
+<div class="container-fluid full-height">
+    <div id="container-header">
+        <form id="form" onsubmit="return false;">
+            <div class="toolbar row">
+                <div class="col-6">
+                    <a id="btn-create"
+                       href="javascript:;"
+                       data-action="/manage/scope/Create"
+                       data-type="pop"
+                       data-options='{"title": "创建作用域", "width": 540, "height": 400, "before": null}'
+                       class="btn btn-green btn-custom">
+                        <i class="fa fa-plus-square"></i>
+                        创建
+                    </a>
+                    <a id="btn-edit"
+                       href="javascript:;"
+                       data-action="/manage/scope/Edit"
+                       data-type="pop"
+                       data-grid="grid"
+                       data-options='{"title": "编辑作用域", "width": 540, "height": 400, "before": null}'
+                       class="btn btn-blue btn-custom">
+                        <i class="fa fa-pencil-square"></i>
+                        编辑
+                    </a>
+                    <a id="btn-delete"
+                       href="javascript:;"
+                       data-action="/manage/scope/Delete"
+                       data-type="ajax"
+                       data-grid="grid"
+                       data-options='{"msg": "确认删除此数据？"}'
+                       class="btn btn-red btn-custom">
+                        <i class="fa fa-trash"></i>
+                        删除
+                    </a>
+                    <a href="javascript:;" class="btn btn-default" onclick="grid.reload()">
+                        <i class="fa fa-refresh"></i> 刷新
+                    </a>
+                </div>
+                <div class="col-6 content-right">
+                    @Html.AntiForgeryToken()
+                    <input type="button" class="btn btn-blue" onclick="window.grid.search()" value="搜索" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="list" class="grid-box"></div>
+</div>
+@section scripts
+{
+    <script src="~/lib/myui/myGridNoFixed.v2.js"></script>
+    <script>
+        var grid = $('#list').MyGrid({
+            api: '/manage/scope/get',
+            columns: [
+                { title: '序号', type: 'indexNum', width: 50 },
+                { title: '编号', field: 'code', width: 160 },
+                { title: '名称', field: 'name', width: 180 },
+                { title: '备注', field: 'remark'}
+
+            ],
+            keyColumn: 'id',
+            height: function () {
+                var h = $(window).height() - $('#container-header').height() - 40;
+                return h;
+            },
+            pageSize: 20,
+            filterFn: function () { return $('#form').serialize(); },
+            dblClick: function () { $('#btn-edit').trigger('click'); },
+            pager: false,
+            multi: false,
+            auto: true
+        });
+    </script>
+}

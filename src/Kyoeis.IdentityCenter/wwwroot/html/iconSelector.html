@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/myui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .icon-list-holder {
+        }
+
+            .icon-list-holder span {
+                display: inline-block;
+                width: 36px;
+                height: 36px;
+                text-align: center;
+                margin: 4px;
+            }
+
+                .icon-list-holder span i {
+                    font-size: 18px;
+                    line-height: 36px;
+                    color: #666;
+                }
+
+                .icon-list-holder span:hover {
+                    box-shadow: 0 0 2px #999;
+                }
+        h3{
+            font-size: 18px;
+            text-align: center;
+            line-height: 40px;
+            letter-spacing: 0.5em;
+            border-bottom: 1px #ddd solid;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="myui-pop-select">
+        <div class="icon-list-holder" id="holder">
+
+        </div>
+    </div>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        var height = $(window).height() - 90;
+
+        $(function () {
+            $.get('/html/icons.json', {}, function (resp) {
+                var html = "";
+                $.each(resp, function (idx, item) {
+                    html += "<h3>" + item.cate + "</h3>";
+                    html += "<div>";
+                    $.each(item.icons, function (i, sub) {
+                        html += "<span data-val='" + sub.substring(3) + "'><i class='" + sub + "'></i></span>";
+                    });
+                    html += "</div>";
+                });
+                $("#holder").html(html);
+            });
+
+            $("#holder").on("dblclick", "span", function () {
+                parent.onIconSelect($(this).data("val"));
+            });
+        });
+    </script>
+</body>
+</html>

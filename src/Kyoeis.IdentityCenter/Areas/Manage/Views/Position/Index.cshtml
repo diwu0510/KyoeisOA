@@ -1,0 +1,116 @@
+﻿@using Kyoeis.IdentityCenter.Service.Dto.Company
+@{
+    ViewData["Title"] = "职位管理";
+}
+
+<div class="container-col-group border">
+    <div class="col-group-item col-2 border-r">
+        <div class="col-header">公司列表</div>
+        <div class="col-body">
+            <ul id="button_group" class="common-btn-list">
+                @foreach (var company in (List<CompanyDto>)ViewBag.CompanyList)
+                {
+                    <li><a href="javascript:;" data-id="@company.Id">@company.Name</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-group-item col-10">
+        <div class="col-header">职位</div>
+        <div class="col-body">
+            <div id="container-header">
+                <form id="form" onsubmit="return false;">
+                    <div class="toolbar row">
+                        <div class="col-6">
+                            <a id="btn-create"
+                               href="javascript:;"
+                               data-action="/manage/position/Create"
+                               data-type="pop"
+                               data-options='{"title": "创建职位", "width": 460, "height": 400, "before": "beforeCreate"}'
+                               class="btn btn-green btn-custom">
+                                <i class="fa fa-plus-square"></i>
+                                创建
+                            </a>
+                            <a id="btn-edit"
+                               href="javascript:;"
+                               data-action="/manage/position/Edit"
+                               data-type="pop"
+                               data-grid="grid"
+                               data-options='{"title": "编辑职位", "width": 460, "height": 400, "before": null}'
+                               class="btn btn-blue btn-custom">
+                                <i class="fa fa-pencil-square"></i>
+                                编辑
+                            </a>
+                            <a id="btn-delete"
+                               href="javascript:;"
+                               data-action="/manage/position/Delete"
+                               data-type="ajax"
+                               data-grid="grid"
+                               data-options='{"msg": "确认删除此数据？"}'
+                               class="btn btn-red btn-custom">
+                                <i class="fa fa-trash"></i>
+                                删除
+                            </a>
+                            <a href="javascript:;" class="btn btn-default" onclick="grid.reload()">
+                                <i class="fa fa-refresh"></i>
+                                刷新
+                            </a>
+                        </div>
+                        <div class="col-6 content-right">
+                            <input type="hidden" id="companyId" name="companyId" value="" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="list" class="grid-box"></div>
+        </div>
+    </div>
+</div>
+
+@Html.AntiForgeryToken()
+
+@section scripts
+{
+    <script src="~/lib/myui/myGridNoFixed.v2.js"></script>
+    <script>
+        var grid = $('#list').MyGrid({
+            api: '/manage/position/get',
+            columns: [
+                { title: '序号', type: 'indexNum', width: 50 },
+                { title: '职位名称', field: 'name' }
+            ],
+            keyColumn: 'id',
+            height: function () {
+                var h = $(window).height() - $('#container-header').height() - 84;
+                return h;
+            },
+            pageSize: 20,
+            filterFn: function () { return $('#form').serialize(); },
+            dblClick: function () { $('#btn-edit').trigger('click'); },
+            pager: false,
+            multi: false,
+            auto: false
+        });
+
+        $(function () {
+            $('#button_group a').on('click',
+                function () {
+                    var that = $(this);
+                    if (that.hasClass('selected')) return;
+
+                    that.addClass('selected').parent().siblings().children('a').removeClass('selected');
+
+                    var id = that.data('id');
+                    $('#companyId').val(id);
+
+                    grid.search();
+                });
+
+            $('#button_group a').first().trigger('click');
+        });
+
+        function beforeCreate(url) {
+            return url + '?companyId=' + $('#companyId').val();
+        }
+    </script>
+}

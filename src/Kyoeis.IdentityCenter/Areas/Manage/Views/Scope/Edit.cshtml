@@ -1,0 +1,44 @@
+﻿@model Kyoeis.IdentityCenter.Service.Data.ScopeEntity
+
+@{
+    ViewData["Title"] = "编辑作用域";
+}
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <h1 class="form-box-title">编辑作用域</h1>
+    <hr/>
+    <div class="form-box-fixed-container">
+        <div class="form-box">
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 作用域标识</div>
+                <div class="control">
+                    <input asp-for="Code" isvalid="yes" checkexpession="NotNull" type="text"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 作用域名称</div>
+                <div class="control">
+                    <input asp-for="Name" isvalid="yes" checkexpession="NotNull" type="text"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label">备注</div>
+                <div class="control">
+                    <textarea asp-for="Remark"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-box-fixed-foot content-right">
+        <input type="submit" id="btn-submit" class="btn btn-green" value="提交"/>
+        <a href="javascript:;" id="btn-closeSelf" class="btn btn-red">关闭</a>
+    </div>
+</form>
+@section scripts
+{
+    <script src="~/lib/validator/validator.js"></script>
+    <script>
+        myUI.initForm();
+    </script>
+}

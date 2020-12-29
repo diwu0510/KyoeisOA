@@ -1,0 +1,70 @@
+﻿@model Kyoeis.IdentityCenter.Service.Data.DepartmentEntity
+
+@{
+    ViewData["Title"] = "创建部门";
+}
+<form asp-action="Create">
+    <input type="hidden" asp-for="CompanyId" />
+    <h1 class="form-box-title">创建部门</h1>
+    <hr/>
+    <div class="form-box-fixed-container">
+        <div class="form-box">
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 上级部门</div>
+                <div class="control">
+                    <select asp-for="ParentId" asp-items="(List<SelectListItem>)ViewBag.Departments">
+                        <option value="">一级部门</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 部门标识</div>
+                <div class="control">
+                    <input asp-for="Code" isvalid="yes" checkexpession="NotNull" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 部门名称</div>
+                <div class="control">
+                    <input asp-for="Name" isvalid="yes" checkexpession="NotNull" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 排序</div>
+                <div class="control">
+                    <input type="number" step="1" asp-for="Sort" isvalid="yes" checkexpession="Number" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-box-fixed-foot">
+        <div class="row">
+            <div class="col-6">
+                <label for="continue"><input id="continue" type="checkbox" checked="" /> 继续添加</label>
+            </div>
+            <div class="col-6 content-right">
+                <input type="submit" id="btn-submit" class="btn btn-green" value="提交"/>
+                <a href="javascript:;" id="btn-closeSelf" class="btn btn-red">关闭</a>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts
+{
+    <script src="~/lib/validator/validator.js"></script>
+    <script>
+        myUI.initForm({
+            successFn: function(response) {
+                if (response.code === 200) {
+                    if ($('#continue').prop('checked')) {
+                        $('#Code').val('');
+                        $('#Name').val('');
+                        $('#Sort').val(Number($('#Sort').val()) + 1);
+                    }
+                    return false;
+                }
+                return true;
+            }
+        });
+    </script>
+}

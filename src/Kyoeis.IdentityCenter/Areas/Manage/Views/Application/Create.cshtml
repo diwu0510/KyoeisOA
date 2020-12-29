@@ -1,0 +1,92 @@
+﻿@using Kyoeis.IdentityCenter.Service.Data
+@using Kyoeis.IdentityCenter.Service.Dto.Scope
+@model Kyoeis.IdentityCenter.Service.Data.ApplicationEntity
+
+@{
+    ViewData["Title"] = "创建项目";
+}
+<form asp-action="Create">
+    <h1 class="form-box-title">创建项目</h1>
+    <hr />
+    <div class="form-box-fixed-container">
+        <div class="form-box">
+            <div class="row">
+                <div class="col-6">
+                    <div class="label"><span class="font-red">*</span> 项目标识</div>
+                    <div class="control">
+                        <input asp-for="Code" isvalid="yes" checkexpession="NotNull" type="text" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label"><span class="font-red">*</span> 项目名称</div>
+                    <div class="control">
+                        <input asp-for="Name" isvalid="yes" checkexpession="NotNull" type="text" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="label"><span class="font-red">*</span> 项目ID</div>
+                    <div class="control">
+                        <input asp-for="ClientId" isvalid="yes" checkexpession="NotNull" type="text" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label"><span class="font-red">*</span> 项目密钥</div>
+                    <div class="control">
+                        <input asp-for="ClientSecret" isvalid="yes" checkexpession="NotNull" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 拥有权限</div>
+                <div class="control">
+                    <input type="hidden" asp-for="Scopes" />
+                    @foreach (var scope in (List<ScopeDto>)ViewBag.Scopes)
+                    {
+                        <label><input type="checkbox" value="@scope.Code" /> [@scope.Code] @scope.Name</label>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">备注</div>
+                <div class="control">
+                    <textarea asp-for="Remark"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 状态</div>
+                <div class="control">
+                    <label for="IsEnabled"><input type="checkbox" asp-for="IsEnabled" /> 有效项目</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-box-fixed-foot content-right">
+        <input type="submit" id="btn-submit" class="btn btn-green" value="提交" />
+        <a href="javascript:;" id="btn-closeSelf" class="btn btn-red">关闭</a>
+    </div>
+</form>
+@section scripts
+{
+    <script src="~/lib/validator/validator.js"></script>
+    <script>
+        $(function() {
+            myUI.initForm();
+
+            $('input[type="checkbox"]').on('click',
+                function() {
+                    setCheckedScope();
+                });
+        });
+
+        function setCheckedScope() {
+            var checked = [];
+            $.each($('input:checkbox:checked'), function(idx, item) {
+                checked.push($(item).val());
+            });
+            $('#Scopes').val(checked.join(','));
+        }
+    </script>
+}

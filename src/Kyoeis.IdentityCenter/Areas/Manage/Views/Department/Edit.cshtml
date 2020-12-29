@@ -1,0 +1,52 @@
+﻿@model Kyoeis.IdentityCenter.Service.Data.DepartmentEntity
+
+@{
+    ViewData["Title"] = "编辑部门信息";
+}
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CompanyId" />
+    <h1 class="form-box-title">编辑部门</h1>
+    <hr />
+    <div class="form-box-fixed-container">
+        <div class="form-box">
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 上级部门</div>
+                <div class="control">
+                    <select asp-for="ParentId" asp-items="(List<SelectListItem>)ViewBag.Departments">
+                        <option value="">一级部门</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 部门标识</div>
+                <div class="control">
+                    <input asp-for="Code" isvalid="yes" checkexpession="NotNull" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 部门名称</div>
+                <div class="control">
+                    <input asp-for="Name" isvalid="yes" checkexpession="NotNull" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"><span class="font-red">*</span> 排序</div>
+                <div class="control">
+                    <input type="number" step="1" asp-for="Sort" isvalid="yes" checkexpession="Number" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-box-fixed-foot content-right">
+        <input type="submit" id="btn-submit" class="btn btn-green" value="提交" />
+        <a href="javascript:;" id="btn-closeSelf" class="btn btn-red">关闭</a>
+    </div>
+</form>
+@section scripts
+{
+    <script src="~/lib/validator/validator.js"></script>
+    <script>
+        myUI.initForm();
+    </script>
+}

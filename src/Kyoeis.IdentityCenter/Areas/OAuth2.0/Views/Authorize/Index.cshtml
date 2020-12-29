@@ -1,0 +1,24 @@
+﻿@model LoginRequest
+
+<html>
+<head>
+    <title>登录</title>
+</head>
+<body>
+    <form asp-action="Index">
+        <input type="hidden" asp-for="RedirectUrl" />
+        <input type="hidden" asp-for="State" />
+        <div>
+            <label>账号：</label>
+            <input type="text" asp-for="Account" />
+        </div>
+        <div>
+            <label>密码：</label>
+            <input type="password" asp-for="Password" />
+        </div>
+        <div>
+            <button type="submit">登录</button>
+        </div>
+    </form>
+</body>
+</html>

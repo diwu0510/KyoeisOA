@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kyoeis.IdentityCenter", "Kyoeis.IdentityCenter\Kyoeis.IdentityCenter.csproj", "{7F50B61F-42FC-4D61-831E-F840878BE228}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kyoeis.WebSite", "Kyoeis.WebSite\Kyoeis.WebSite.csproj", "{EA6717D0-70C6-4701-A531-F3D16F783485}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kyoeis.Data", "Kyoeis.Data\Kyoeis.Data.csproj", "{45E4EE52-E662-43DF-89DC-8DF80ECD9055}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kyoeis.Core", "Kyoeis.Core\Kyoeis.Core.csproj", "{23086F0E-948A-4D06-8B93-780F11FE1086}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. 框架层", "2. 框架层", "{3AAEB57F-A7CC-42AC-BE25-7A6C3DC8EAC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. 基础设置层", "1. 基础设置层", "{711FF283-52A7-4250-B223-F646E2909012}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. 应用层", "4. 应用层", "{4C6D1EF2-1C9B-4FF6-A825-FBD69232E8CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. 测试", "5. 测试", "{C4329D7A-0F20-40C6-AC78-FA48B0185541}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kyoeis.Utility", "Kyoeis.Utility\Kyoeis.Utility.csproj", "{B11381B9-08B4-48EF-973D-00537A60880F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. 业务逻辑层", "3. 业务逻辑层", "{E83DAEE6-4153-42AB-90CD-42F8BDB2DD4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kyoeis.IdentityCenter.Service", "Kyoeis.IdentityCenter.Service\Kyoeis.IdentityCenter.Service.csproj", "{7C52A6F9-C5B6-43ED-8D8C-F0941C4430CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F50B61F-42FC-4D61-831E-F840878BE228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F50B61F-42FC-4D61-831E-F840878BE228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F50B61F-42FC-4D61-831E-F840878BE228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F50B61F-42FC-4D61-831E-F840878BE228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6717D0-70C6-4701-A531-F3D16F783485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6717D0-70C6-4701-A531-F3D16F783485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6717D0-70C6-4701-A531-F3D16F783485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6717D0-70C6-4701-A531-F3D16F783485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E4EE52-E662-43DF-89DC-8DF80ECD9055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E4EE52-E662-43DF-89DC-8DF80ECD9055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E4EE52-E662-43DF-89DC-8DF80ECD9055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E4EE52-E662-43DF-89DC-8DF80ECD9055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23086F0E-948A-4D06-8B93-780F11FE1086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23086F0E-948A-4D06-8B93-780F11FE1086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23086F0E-948A-4D06-8B93-780F11FE1086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23086F0E-948A-4D06-8B93-780F11FE1086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11381B9-08B4-48EF-973D-00537A60880F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11381B9-08B4-48EF-973D-00537A60880F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11381B9-08B4-48EF-973D-00537A60880F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11381B9-08B4-48EF-973D-00537A60880F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C52A6F9-C5B6-43ED-8D8C-F0941C4430CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C52A6F9-C5B6-43ED-8D8C-F0941C4430CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C52A6F9-C5B6-43ED-8D8C-F0941C4430CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C52A6F9-C5B6-43ED-8D8C-F0941C4430CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F50B61F-42FC-4D61-831E-F840878BE228} = {4C6D1EF2-1C9B-4FF6-A825-FBD69232E8CE}
+		{EA6717D0-70C6-4701-A531-F3D16F783485} = {C4329D7A-0F20-40C6-AC78-FA48B0185541}
+		{45E4EE52-E662-43DF-89DC-8DF80ECD9055} = {3AAEB57F-A7CC-42AC-BE25-7A6C3DC8EAC8}
+		{23086F0E-948A-4D06-8B93-780F11FE1086} = {3AAEB57F-A7CC-42AC-BE25-7A6C3DC8EAC8}
+		{B11381B9-08B4-48EF-973D-00537A60880F} = {711FF283-52A7-4250-B223-F646E2909012}
+		{7C52A6F9-C5B6-43ED-8D8C-F0941C4430CD} = {E83DAEE6-4153-42AB-90CD-42F8BDB2DD4F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0381743-17D3-4944-BFEF-B3DA2E80CCDF}
+	EndGlobalSection
+EndGlobal
